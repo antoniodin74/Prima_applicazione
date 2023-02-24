@@ -1,0 +1,39 @@
+{{#if message}}
+    {{#each message}}
+        <div class="alert alert-success">{{this}}</div>
+    {{/each}}
+{{/if}}
+{{#if errors}}
+    {{#each errors}}
+        <div class="alert alert-danger">{{this}}</div>
+    {{/each}}
+{{/if}}
+
+<form method="post" action="/tipo/{{this.id}}" name="tipo" id="tipo">
+    <div class="row">
+        <div class="col-md-10 form-group">
+            <input class="form-control" name="tipo_name" value="{{tipo}}">
+        </div>
+        <div class="col-md-2">
+            <button value="UPDATE" onclick="updateList(this); return false" class="btn btn-success" title="UPDATE">
+              UPDATE
+            </button>
+            
+            <input type="hidden" name="_method" id="method" value="DELETE">
+            <button value="DELETE" onclick="updateList(this); return false" class="btn btn-danger" title="DELETE">
+                DELETE
+            </button>
+        
+         </div>
+    </div>
+</form>
+
+<script>
+    function updateList(btn) {
+        const method = document.getElementById('method');
+        const form = document.getElementById('tipo');
+        method.value = btn.value === 'DELETE' ? 'DELETE' : 'PATCH';
+        console.log(method.value);
+        method.value === 'PATCH' ? form.submit() : showConfirmMsg('Delete Tipo', 'Sei sicuro di eliminare il tipo?', form.name);
+    }
+</script>

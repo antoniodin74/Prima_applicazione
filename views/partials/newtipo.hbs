@@ -1,0 +1,17 @@
+<form method="post" action="/tipo" name="newtipo" id="newtipo">
+    <div class="row">
+        <div class="col-md-10 form-group">
+            <input class="form-control" name="tipo_name" value="{{tipo}}" placeholder="INSERT TIPO">
+        </div>
+        <div class="col-md-2">
+            <button value="SAVE" class="btn btn-success" title="INSERT">
+              SAVE
+            </button>
+            {{#if showBackBotton}}
+            <button value="BACK" onclick="location.href='/tipo'" class="btn btn-danger" title="BACK">
+                BACK
+            </button>
+            {{/if}}
+         </div>
+    </div>
+</form>

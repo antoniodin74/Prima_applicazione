@@ -1,0 +1,92 @@
+<script>
+    async function loginUser(f) {
+        try {
+           
+        const res = await axios.post('/auth/login',
+            {
+                email : f.email.value,
+                password : f.password.value
+            }
+        );
+        
+        Swal.fire({
+            type : 'success',
+            text : 'Utente loggato con successo!'
+        }).then (() =>{location.href = '/'});
+        } catch (e) {
+            console.log('errore');
+            Swal.fire(e.response.data.message)
+        }
+    }
+   async function registerUser(f) {
+        try {
+           
+        const res = await axios.post('/auth/register',
+            {
+                name : f.name.value,
+                email : f.email.value,
+                password : f.password.value
+            }
+        );
+        //console.log(res.data);
+        
+        Swal.fire({
+            type : 'success',
+            text : 'Utente registrato con successo!'
+        }).then (() =>{location.href = '/'});
+        } catch (e) {
+            Swal.fire(e.message)
+        }
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        {{#if signup}}
+        <h2>REGISTER</h2>
+        {{else}}
+        <h2>LOGIN</h2>
+        {{/if}}
+        
+        
+        {{#if signup}}
+        <form action="/auth/register" method="post" onsubmit="registerUser(this); return false">
+        <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input required type="text" class="form-control" id="name" aria-describedby="name" name="name">
+        </div>
+
+        {{else}}
+        <form action="/auth/login" method="post" onsubmit="loginUser(this); return false">
+        {{/if}}
+        <div class="form-group">
+            <label for="email" class="form-label">Email address</label>
+            <input required type="email" class="form-control" id="email" name="email" aria-describedby="email">
+        </div>
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input required type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="form-group text-center">
+           
+            <button type="submit" class="btn btn-primary">
+                {{#if signup}}
+                    REGISTER
+                {{else}}
+                    LOGIN
+                {{/if}}
+            </button>
+        </div>
+                <div class="form-group text-center">
+            {{#if signup}}
+                Sei già registrato? <a href="/auth/login">LOGIN</a>
+            {{else}}
+                Non sei registrato? <a href="/auth/signup">SIGNUP</a>
+            {{/if}}
+
+        </div>
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>

@@ -1,0 +1,32 @@
+{
+    "utenti": [
+        {
+            "utente": "antonio",
+            "nome": "antonio di nocera",
+            "tipo": "padre"
+,            "attivo": true,
+            "id": 1
+        },
+        {
+            "utente": "dany",
+            "nome": "daniele di nocera",
+            "tipo": "figlio",
+            "attivo": true,
+            "id": 2
+        }
+],
+    "tipi": [
+        {
+            "tipo": "padre",
+            "id": 1
+        },
+        {
+            "tipo": "madre",
+            "id": 2
+        },
+        {
+            "tipo": "figlio",
+            "id": 3
+        }
+    ]
+}

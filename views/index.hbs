@@ -1,0 +1,8 @@
+<h1>Lista Utenti {{tipo}}</h1>
+<ul>
+    {{#each utenti}}
+        <li>{{this.utente}}</li>
+    {{else}}
+        <h2 class="text-danger">dati non presenti</h2>
+    {{/each}}
+</ul>
